@@ -1,0 +1,28 @@
+#include <iostream>
+int main () {
+using namespace std;
+	string user_answer;
+	
+	cout << "Get ready to play rock paper scissors!\n";
+	
+while (true) {
+
+	cout << "Shoot your shot or enter 'Exit' to quit:\n";
+	cin >> user_answer;
+	
+	if (user_answer == "Exit") {
+		break;
+	}
+	
+	else if (user_answer == "Rock\n" || user_answer == "Rock") {
+		cout << "Paper, I am victorious!!!!\n";
+		continue;
+	}
+	
+	else if (user_answer == "Paper" || user_answer == "Paper") {
+		cout << "Scissors, I am victorious!!!!\n";
+	}
+	
+}
+
+}
