@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int x[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+    int n;
+    
+    cout << "Enter any number 1-10: " << endl;
+    cin >> n;
+
+    if (n >= 1 && n <= 10) {
+        for (int i = 0; i < 10; i += n) {
+            cout << x[i] << endl;
+        }
+    
+    } 
+    
+    return 0;
+    
+}
