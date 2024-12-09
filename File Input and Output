@@ -1,0 +1,87 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+// Calculates gallons of paint needed
+double calculateGallons(double size) {
+    return size / 110.0;
+}
+
+// Calculates labor hours needed
+int calculateLaborHours(double size) {
+    return static_cast<int>((size / 110.0) * 8);
+}
+
+// Calculates paint cost
+double calculatePaintCost(double size, double price) {
+    return calculateGallons(size) * price;
+}
+
+// Calculates labor cost
+double calculateLaborCost(double size) {
+    return calculateLaborHours(size) * 25.0;
+}
+
+// Calculates total cost
+double calculateTotalCost(double size, double price) {
+    return calculateLaborCost(size) + calculatePaintCost(size, price);
+}
+
+int main() {
+    int rooms;
+    double paintPrice;
+
+    cout << "Enter the number of rooms: ";
+    cin >> rooms;
+
+    cout << "Enter the price per gallon of paint: ";
+    cin >> paintPrice;
+
+    double totalSize = 0.0;
+    for (int i = 1; i <= rooms; i++) {
+        double wallSize;
+        cout << "Enter the square feet of room " << i << ": ";
+        cin >> wallSize;
+        totalSize += wallSize;
+    }
+
+    // Calculate results
+    double gallons = calculateGallons(totalSize);
+    int laborHours = calculateLaborHours(totalSize);
+    double paintCost = calculatePaintCost(totalSize, paintPrice);
+    double laborCost = calculateLaborCost(totalSize);
+    double totalCost = calculateTotalCost(totalSize, paintPrice);
+
+    // Display the estimate
+    cout << "\nEstimate:\n";
+    cout << "Gallons of paint required: " << gallons << endl;
+    cout << "Labor hours required: " << laborHours << endl;
+    cout << "Cost of the paint: " << paintCost << endl;
+    cout << "Labor charges: " << laborCost << endl;
+    cout << "Total cost: " << totalCost << endl;
+
+
+    string choice;
+    cout << "\nWould you like to save this estimate to a file? (Yes/No): ";
+    cin >> choice;
+
+    if (choice == "Yes" || choice == "yes") {
+        ofstream outFile("PaintJobEstimate.txt");
+        if (outFile) {
+            outFile << "Estimate:\n";
+            outFile << "Gallons of paint required: " << gallons << endl;
+            outFile << "Labor hours required: " << laborHours << endl;
+            outFile << "Cost of the paint: " << paintCost << endl;
+            outFile << "Labor charges: " << laborCost << endl;
+            outFile << "Total cost: " << totalCost << endl;
+            outFile.close();
+            cout << "Your estimate has been saved to 'PaintJobEstimate.txt'.\n";
+        } else {
+            cout << "Error: Could not save the estimate.\n";
+        }
+    } else {
+        cout << "You chose not to save the estimate.\n";
+    }
+
+    return 0;
+}
