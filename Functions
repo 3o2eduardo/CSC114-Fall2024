@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+
+// Returns the sum of two numbers
+int sum_of(int num1, int num2) {
+    return num1 + num2;
+}
+
+// Returns the product of two numbers
+int product_of(int num1, int num2) {
+    return num1 * num2;
+}
+
+// Calculates the area and circumference of a circle
+void circum_area_of(double radius, double &area, double &circumference) {
+    area = 3.14 * radius * radius;
+    circumference = 2 * 3.14 * radius;
+}
+
+// Returns the maximum of three numbers
+int max_of(int num1, int num2, int num3) {
+    return (num1 > num2) ? ((num1 > num3) ? num1 : num3) : ((num2 > num3) ? num2 : num3);
+}
+
+// Returns the minimum of three numbers
+int min_of(int num1, int num2, int num3) {
+    return (num1 < num2) ? ((num1 < num3) ? num1 : num3) : ((num2 < num3) ? num2 : num3);
+}
+
+// Checks if a number is an even number
+bool even_or_odd(int num) {
+    return num % 2 == 0;
+}
+
+// Checks if someone is eligible to vote
+bool voting(int age) {
+    return age >= 18;
+}
+
+
+int main() {
+    int numA, numB, numC, age, num;
+    double radius, area, circumference;
+
+    cout << "Type 2 numbers" << endl;
+    cin >> numA >> numB;
+    cout << "The sum of those #s is: " << sum_of(numA, numB) << endl;
+
+    cout << "Type 2 numbers" << endl;
+    cin >> numA >> numB;
+    cout << "The product of those #s is: " << product_of(numA, numB) << endl;
+
+
+    cout << "Type the radius of a circle: ";
+    cin >> radius;
+    circum_area_of(radius, area, circumference);
+    cout << "Area: " << area << ", Circumference: " << circumference << endl;
+
+
+    cout << "Type 3 numbers" << endl;
+    cin >> numA >> numB >> numC;
+    cout << "The maximum is: " << max_of(numA, numB, numC) << endl;
+
+  
+    cout << "Type 3 numbers" << endl;
+    cin >> numA >> numB >> numC;
+    cout << "The minimum is: " << min_of(numA, numB, numC) << endl;
+
+    
+    cout << "Type a # to determine if even or odd" << endl;
+    cin >> num;
+    cout << (even_or_odd(num) ? "Even" : "Odd") << endl;
+
+    
+    cout << "Are you eligible to vote? Type your age:" << endl;
+    cin >> age;
+    cout << (voting(age) ? "You are eligible to vote!" : "You are not eligible to vote yet.") << endl;
+
+    return 0;
+}
