@@ -1,3 +1,17 @@
+/*
+
+=============================================================
+Author : Eduardo Valdivia
+Class : csc 114
+Class Section : 401
+Date : 11/22/2024
+Assignment : Final
+I wrote all the code submitted, and I have provided citations and references where appropriate.
+
+==============================================================
+
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
