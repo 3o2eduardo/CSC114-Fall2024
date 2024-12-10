@@ -1,0 +1,103 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+//Shows tasks
+void displayTasks(vector<string>& tasks) {
+    if (tasks.empty()) {
+        cout << "You have no active tasks, why not create one now?" << endl;
+    } else {
+        cout << "Tasks:" << endl;
+        for (int i = 0; i < tasks.size(); i++) {
+            cout << i + 1 << ". " << tasks[i] << endl;
+        }
+    }
+}
+//Adds task
+void addTask(vector<string>& tasks) {
+    string task;
+    cout << "Enter the name of your new task: ";
+    cin >> task;
+    tasks.push_back(task);
+    cout << "Task added successfully! Get a move on!" << endl;
+}
+//marks completed task
+void markTaskCompleted(vector<string>& tasks) {
+    if (tasks.empty()) {
+        cout << "You don’t have any tasks to mark as completed right now." << endl;
+        return;
+    }
+
+    displayTasks(tasks);
+
+    int taskNumber;
+    cout << "Enter the task number you want marked as completed: ";
+    cin >> taskNumber;
+
+    if (taskNumber > 0 && taskNumber <= tasks.size()) {
+        tasks[taskNumber - 1] += " [Completed]";
+        cout << "Awesome sause! The task has been marked as completed." << endl;
+    } else {
+        cout << "Invalid input. Please enter a valid task number." << endl;
+    }
+}
+//Deletes task
+void deleteTask(vector<string>& tasks) {
+    if (tasks.empty()) {
+        cout << "There are no active tasks to delete right now." << endl;
+        return;
+    }
+
+    displayTasks(tasks);
+
+    int taskNumber;
+    cout << "Enter the task number you want to delete: ";
+    cin >> taskNumber;
+
+    if (taskNumber > 0 && taskNumber <= tasks.size()) {
+        tasks.erase(tasks.begin() + taskNumber - 1);
+        cout << "Task deleted successfully. It's okay, life happens!" << endl;
+    } else {
+        cout << "Invalid input. Please choose a valid task number." << endl;
+    }
+}
+
+int main() {
+    vector<string> tasks;
+    int option;
+//shows all menu options
+    do {
+        cout << "Welcome to Swift-List!" << endl;
+        cout << "1. Create a task:" << endl;
+        cout << "2. View all tasks:" << endl;
+        cout << "3. Mark a task as completed:" << endl;
+        cout << "4. Delete a task:" << endl;
+        cout << "5. Exit the program:" << endl;
+        cout << "Choose an option (1-5): ";
+        cin >> option;
+
+        switch (option) {
+            case 1:
+                addTask(tasks);
+                break;
+            case 2:
+                displayTasks(tasks);
+                break;
+            case 3:
+                markTaskCompleted(tasks);
+                break;
+            case 4:
+                deleteTask(tasks);
+                break;
+            case 5:
+                cout << "Thanks for using Swift-List! Until next time!" << endl;
+                break;
+            default:
+                cout << "Invalid option, please try again." << endl;
+        }
+
+    } while (option != 5);
+
+    return 0;
+}
